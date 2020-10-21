@@ -9,6 +9,7 @@
     tools:context=".MapActivity"
     android:fitsSystemWindows="false">
 
+
     <include layout="@layout/blabla"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
