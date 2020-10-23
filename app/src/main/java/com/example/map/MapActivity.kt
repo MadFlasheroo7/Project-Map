@@ -4,15 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.updatePadding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_map.*
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -31,10 +34,21 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
 //        fullscreenContentControls = findViewById(R.id.cd)
+//        val bottomNav = findViewById<View>(R.id.bottomNavigationView)
+//        bottomNav.setOnApplyWindowInsetsListener { v, insets ->
+//            v.updatePadding(bottom = insets.systemWindowInsetBottom)
+//            insets
+//        }
 
+        top_toolbar.setOnApplyWindowInsetsListener { view, windowInsets ->
+            val bottomNav = top_toolbar.layoutParams as ViewGroup.MarginLayoutParams
+            bottomNav.setMargins(10,windowInsets.systemWindowInsetTop + 10,10,10)
+            windowInsets
+        }
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
 
     }
 //
