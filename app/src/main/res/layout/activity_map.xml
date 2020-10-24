@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <LinearLayout
             android:id="@+id/top_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
@@ -30,10 +30,135 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.SearchView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.google.android.material.appbar.MaterialToolbar>
+                <EditText
+                    android:id="@+id/mapSearchView"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:elevation="0dp"
+                    android:layout_marginStart="8dp"
+                    android:gravity="bottom"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent"
+                    android:animateLayoutChanges="true"
+                    android:hint="Search"/>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/userImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:padding="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:riv_oval="true"/>
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:scrollbars="none"
+            android:paddingStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top_toolbar">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    app:cornerRadius="30dp"
+                    app:iconTint="@color/black"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/Chip1"
+                    app:icon="@drawable/ic_home_24"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    app:cornerRadius="30dp"
+                    android:layout_marginEnd="8dp"
+                    app:iconTint="@color/black"
+                    android:textColor="@color/black"
+                    android:text="@string/Chip2"
+                    app:icon="@drawable/ic_petrol_station_24"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    app:cornerRadius="30dp"
+                    app:iconTint="@color/black"
+                    android:textColor="@color/black"
+                    android:text="@string/Chip3"
+                    android:layout_marginEnd="8dp"
+                    app:icon="@drawable/ic_restaurant_24"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    app:cornerRadius="30dp"
+                    app:iconTint="@color/black"
+                    android:textColor="@color/black"
+                    android:text="@string/Chip4"
+                    android:layout_marginEnd="8dp"
+                    app:icon="@drawable/ic_local_police_24"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    app:cornerRadius="30dp"
+                    app:iconTint="@color/black"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/black"
+                    android:text="@string/Chip5"
+                    app:icon="@drawable/ic_hotel_24"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    app:cornerRadius="30dp"
+                    app:iconTint="@color/black"
+                    android:textColor="@color/black"
+                    android:text="@string/Chip6"
+                    android:layout_marginEnd="8dp"
+                    app:icon="@drawable/ic_landmarks_24"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    app:cornerRadius="30dp"
+                    app:iconTint="@color/black"
+                    android:textColor="@color/black"
+                    android:text="@string/Chip7"
+                    android:layout_marginEnd="8dp"
+                    app:icon="@drawable/ic_school_24"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    app:cornerRadius="30dp"
+                    app:iconTint="@color/black"
+                    android:textColor="@color/black"
+                    android:text="@string/Chip8"
+                    android:layout_marginEnd="8dp"
+                    app:icon="@drawable/ic_home_24"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/currLocation"

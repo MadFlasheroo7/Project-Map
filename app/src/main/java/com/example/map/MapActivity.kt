@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.updatePadding
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -33,6 +34,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
+        Glide.with(this)
+            .load("https://picsum.photos/200")
+            .into(userImage)
 //        fullscreenContentControls = findViewById(R.id.cd)
 //        val bottomNav = findViewById<View>(R.id.bottomNavigationView)
 //        bottomNav.setOnApplyWindowInsetsListener { v, insets ->
@@ -42,7 +46,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         top_toolbar.setOnApplyWindowInsetsListener { view, windowInsets ->
             val bottomNav = top_toolbar.layoutParams as ViewGroup.MarginLayoutParams
-            bottomNav.setMargins(10,windowInsets.systemWindowInsetTop + 10,10,10)
+            bottomNav.setMargins(20,windowInsets.systemWindowInsetTop + 20,20,20)
             windowInsets
         }
         val mapFragment = supportFragmentManager
