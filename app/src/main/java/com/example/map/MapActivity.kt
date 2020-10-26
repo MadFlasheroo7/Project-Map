@@ -10,8 +10,12 @@ import android.widget.TextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.map.fragments.MapFragment
+import com.example.map.fragments.PlacesFragment
+import com.example.map.fragments.ProfileFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -34,20 +38,23 @@ class MapActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
         val view: CoordinatorLayout = findViewById(R.id.cd)
+        @Suppress("DEPRECATION")
         view.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
+//        val navController = findNavController(R.id.fragment_Holder)
+//        bottomNavigationView.setupWithNavController(navController)
         val map = MapFragment()
-//        val places = Cart()
-//        val profile = Profile()
+        val places = PlacesFragment()
+        val profile = ProfileFragment()
         setCurrentFragment(map)
         bottomNav = bottomNavigationView
         bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_map -> setCurrentFragment(map)
-                R.id.menu_places -> setCurrentFragment(map)
-                R.id.menu_profile -> setCurrentFragment(map)
+                R.id.menu_places -> setCurrentFragment(places)
+                R.id.menu_profile -> setCurrentFragment(profile)
             }
             true
         }
@@ -66,6 +73,7 @@ class MapActivity : AppCompatActivity() {
     }
 
     private fun setCurrentFragment(fragment : Fragment){
+
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_Holder,fragment)
             commit()

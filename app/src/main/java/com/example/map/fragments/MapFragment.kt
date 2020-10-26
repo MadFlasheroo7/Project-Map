@@ -12,7 +12,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_map.*
 
-
 class MapFragment : Fragment() {
     private val callback = OnMapReadyCallback {googleMap ->
         val sydney = LatLng(-34.0,151.0)
@@ -20,14 +19,16 @@ class MapFragment : Fragment() {
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_map, container, false)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-        @Suppress("DEPRECATION")
         top_toolbar.setOnApplyWindowInsetsListener { _, windowInsets ->
-            val bottomNav = top_toolbar.layoutParams as ViewGroup.MarginLayoutParams
-            bottomNav.setMargins(20,windowInsets.systemWindowInsetTop + 20,20,20)
+            val topToolBar = top_toolbar.layoutParams as ViewGroup.MarginLayoutParams
+            @Suppress("DEPRECATION")
+            topToolBar.setMargins(20,windowInsets.systemWindowInsetTop + 20,20,20)
             windowInsets
         }
         Glide.with(this)
@@ -37,12 +38,4 @@ class MapFragment : Fragment() {
         mapFragment.getMapAsync(callback)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-//        Glide.with(this)
-//            .load("https://picsum.photos/200")
-//            .into(userImage)
-
-        return inflater.inflate(R.layout.fragment_map, container, false)
-    }
 }

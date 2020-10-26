@@ -19,4 +19,7 @@
 
     <!--Search-->
     <string name="search_hint">Search Here</string>
+
+    <!--Content Descriptions-->
+    <string name="mic">Voice Search icon</string>
 </resources>
