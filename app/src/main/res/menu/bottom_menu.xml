@@ -2,14 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="home"
-        android:icon="@drawable/ic_launcher_foreground"/>
-    <item android:title="home2"
-        android:icon="@drawable/ic_launcher_foreground"/>
-    <item android:title="home3"
-        android:icon="@drawable/ic_launcher_foreground"/>
-    <item android:title="home4"
-        android:icon="@drawable/ic_launcher_foreground"/>
-    <item android:title="home5"
-        android:icon="@drawable/ic_launcher_foreground"/>
+    <item android:id="@+id/menu_map"
+        android:title="@string/bottom_nav"
+        android:icon="@drawable/ic_map_24"/>
+    <item android:id="@+id/menu_places"
+        android:title="@string/bottom_nav2"
+        android:icon="@drawable/ic_places"/>
+    <item android:id="@+id/menu_profile"
+        android:title="@string/bottom_nav3"
+        android:icon="@drawable/ic_profile"/>
 </menu>

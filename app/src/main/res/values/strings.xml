@@ -1,12 +1,22 @@
 <resources>
     <string name="app_name">Map</string>
     <string name="Location">User\'s Location</string>
-    <string name="Chip1">Home</string>
-    <string name="Chip2">Petrol Station</string>
-    <string name="Chip3">Restaurants</string>
-    <string name="Chip4">Police Stations</string>
-    <string name="Chip5">Hotels</string>
-    <string name="Chip6">LandMarks</string>
-    <string name="Chip7">Schools</string>
-    <string name="Chip8">loading</string>
+
+    <!--Categories-->
+    <string name="Categories">Home</string>
+    <string name="Categories2">Petrol Station</string>
+    <string name="Categories3">Restaurants</string>
+    <string name="Categories4">Police Stations</string>
+    <string name="Categories5">Hotels</string>
+    <string name="Categories6">LandMarks</string>
+    <string name="Categories7">Schools</string>
+    <string name="Categories8">More</string>
+
+    <!--Bottom nav-->
+    <string name="bottom_nav">Map</string>
+    <string name="bottom_nav2">Places</string>
+    <string name="bottom_nav3">Profile</string>
+
+    <!--Search-->
+    <string name="search_hint">Search Here</string>
 </resources>

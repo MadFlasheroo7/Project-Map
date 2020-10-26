@@ -9,22 +9,26 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.updatePadding
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.map.fragments.MapFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_map.*
 
-class MapActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapActivity : AppCompatActivity() {
 
-    private lateinit var gMap: GoogleMap
+//    private lateinit var gMap: GoogleMap
 //    private lateinit var fullscreenContent: TextView
 //    private lateinit var fullscreenContentControls: LinearLayout
 //    private val hideHandler = Handler()
 //    private var isFullscreen: Boolean = false
+    private lateinit var bottomNav: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +38,19 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
-        Glide.with(this)
-            .load("https://picsum.photos/200")
-            .into(userImage)
+        val map = MapFragment()
+//        val places = Cart()
+//        val profile = Profile()
+        setCurrentFragment(map)
+        bottomNav = bottomNavigationView
+        bottomNav.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_map -> setCurrentFragment(map)
+                R.id.menu_places -> setCurrentFragment(map)
+                R.id.menu_profile -> setCurrentFragment(map)
+            }
+            true
+        }
 //        fullscreenContentControls = findViewById(R.id.cd)
 //        val bottomNav = findViewById<View>(R.id.bottomNavigationView)
 //        bottomNav.setOnApplyWindowInsetsListener { v, insets ->
@@ -44,45 +58,17 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 //            insets
 //        }
 
-        top_toolbar.setOnApplyWindowInsetsListener { view, windowInsets ->
-            val bottomNav = top_toolbar.layoutParams as ViewGroup.MarginLayoutParams
-            bottomNav.setMargins(20,windowInsets.systemWindowInsetTop + 20,20,20)
-            windowInsets
-        }
-        val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-
-
-    }
-//
-//    private fun toggle() {
-//        if (isFullscreen) {
-//            hide()
-//        } else {
-//            show()
+//        top_toolbar.setOnApplyWindowInsetsListener { view, windowInsets ->
+//            val bottomNav = top_toolbar.layoutParams as ViewGroup.MarginLayoutParams
+//            bottomNav.setMargins(20,windowInsets.systemWindowInsetTop + 20,20,20)
+//            windowInsets
 //        }
-//    }
+    }
 
-//    private fun show() {
-//        fullscreenContentControls = findViewById(R.id.cd)
-//        fullscreenContentControls.systemUiVisibility =
-//            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-//                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//        isFullscreen = true
-//    }
-//
-//    private fun hide() {
-//        fullscreenContentControls = findViewById(R.id.cd)
-//        fullscreenContentControls.visibility = View.GONE
-//        isFullscreen = false
-//    }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        gMap = googleMap
-        //custom marker
-        val sydney = LatLng(-34.0, 151.0)
-        gMap.addMarker(MarkerOptions().position(sydney).title("Marker by MadFlasher"))
-        gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+    private fun setCurrentFragment(fragment : Fragment){
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment_Holder,fragment)
+            commit()
+        }
     }
 }
